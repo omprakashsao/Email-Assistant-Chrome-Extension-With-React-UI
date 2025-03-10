@@ -1,0 +1,5 @@
+package com.email.om.bean;
+
+public class EmailRequest {
+
+}

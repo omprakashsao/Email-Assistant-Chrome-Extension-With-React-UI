@@ -1,0 +1,55 @@
+package com.email.om.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.email.om.bean.EmailRequest;
+
+import lombok.Value;
+
+public class EmailServiceImpl implements EmailService {
+	
+	@Autowired
+	private WebClient client;
+	
+
+	private String url;
+	
+	
+	private String key;
+
+	@Override
+	public String getResponse(EmailRequest emailrequest) {
+		//build promt	
+		String prompt = buildPrompt(emailrequest);
+		
+		//craft request
+		String body = "{\r\n"
+				+ "  \"contents\": [{\r\n"
+				+ "    \"parts\":[{\"text\": "+ prompt + "}]\r\n"
+				+ "    }]\r\n"
+				+ "   }";
+		
+		
+		//send request and get response
+		
+		client.post()
+		      .uri("");
+		//extract response and return
+		
+		return null;
+	}
+
+	private String buildPrompt(EmailRequest emailrequest) {
+	    StringBuilder prompt = new StringBuilder();
+	    prompt.append("Generate a professional email reply for hte following email content. Please don't generate a subject line ");
+	    if(emailrequest.getTone() != null && !emailrequest.getTone().isEmpty()) {
+	    	prompt.append("use a ").append(emailrequest.getTone()).append(" tone ");
+	    }
+	    
+	    prompt.append("\n Original Email: ").append(emailrequest.getEmailContent());
+	    
+		return prompt.toString();
+	}
+
+}

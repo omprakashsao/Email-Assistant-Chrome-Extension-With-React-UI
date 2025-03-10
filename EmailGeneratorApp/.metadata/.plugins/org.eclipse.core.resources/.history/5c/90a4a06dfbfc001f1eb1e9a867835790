@@ -1,0 +1,5 @@
+package com.email.om.service;
+
+public interface EmailService {
+
+}
