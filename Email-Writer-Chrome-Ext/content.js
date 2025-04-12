@@ -4,6 +4,8 @@ function createAIButton() {
    const button = document.createElement('div');
    button.className = 'T-I J-J5-Ji aoO v7 T-I-atl L3';
    button.style.marginRight = '8px';
+   button.style.borderRadius= '18px';
+   button.style.background= 'linear-gradient(165deg, #ff0000a8, #090a12a8, blue, yellow)'
    button.innerHTML = 'AI Reply';
    button.setAttribute('role','button');
    button.setAttribute('data-tooltip','Generate AI Reply');
